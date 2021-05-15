@@ -1,0 +1,183 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Main.theme" type="Theme" id=2]
+[ext_resource path="res://BuySellDrugDialog.tscn" type="PackedScene" id=3]
+
+[node name="Main" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 496.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 400, 200 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameTitle" type="Label" parent="VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+text = "Drug Wars"
+
+[node name="Spacer3" type="Label" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 480.0
+margin_bottom = 68.0
+theme = ExtResource( 2 )
+
+[node name="CurrentCityTitle" type="Label" parent="VBoxContainer"]
+margin_top = 72.0
+margin_right = 480.0
+margin_bottom = 104.0
+theme = ExtResource( 2 )
+text = "Current City"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 108.0
+margin_right = 480.0
+margin_bottom = 128.0
+
+[node name="ChangeCityButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 86.0
+margin_bottom = 20.0
+text = "Change City"
+
+[node name="Spacer" type="Label" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 480.0
+margin_bottom = 146.0
+
+[node name="InventoryTitle" type="Label" parent="VBoxContainer"]
+margin_top = 150.0
+margin_right = 480.0
+margin_bottom = 182.0
+theme = ExtResource( 2 )
+text = "Inventory"
+
+[node name="MoneyLabel" type="Label" parent="VBoxContainer"]
+margin_top = 186.0
+margin_right = 480.0
+margin_bottom = 200.0
+text = "Money: $1000"
+
+[node name="InventoryList" type="ItemList" parent="VBoxContainer"]
+margin_top = 204.0
+margin_right = 480.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 100 )
+items = [ "Item 0", null, false, "Item 1", null, false ]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 308.0
+margin_right = 480.0
+margin_bottom = 328.0
+
+[node name="SellDrugButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 35.0
+margin_bottom = 20.0
+text = "Sell"
+
+[node name="Spacer2" type="Label" parent="VBoxContainer"]
+margin_top = 332.0
+margin_right = 480.0
+margin_bottom = 346.0
+
+[node name="City Drug Label" type="Label" parent="VBoxContainer"]
+margin_top = 350.0
+margin_right = 480.0
+margin_bottom = 382.0
+theme = ExtResource( 2 )
+text = "City Inventory"
+
+[node name="CityDrugList" type="ItemList" parent="VBoxContainer"]
+margin_top = 386.0
+margin_right = 480.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 0, 100 )
+items = [ "Item 0", null, false, "Item 1", null, false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 490.0
+margin_right = 480.0
+margin_bottom = 510.0
+
+[node name="BuyDrugDialogButton" type="Button" parent="VBoxContainer/HBoxContainer3"]
+margin_right = 36.0
+margin_bottom = 20.0
+text = "Buy"
+
+[node name="CityChooser" type="PopupPanel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CityChooser"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CityChooser/MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 488.0
+margin_bottom = 576.0
+
+[node name="Label" type="Label" parent="CityChooser/MarginContainer/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+text = "Cities"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CityList" type="ItemList" parent="CityChooser/MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 480.0
+margin_bottom = 236.0
+rect_min_size = Vector2( 400, 200 )
+items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CityChooser/MarginContainer/VBoxContainer"]
+margin_top = 240.0
+margin_right = 480.0
+margin_bottom = 260.0
+custom_constants/separation = 14
+
+[node name="SelectCityButton" type="Button" parent="CityChooser/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 79.0
+margin_bottom = 20.0
+text = "Select City"
+
+[node name="CloseCityChooserButton" type="Button" parent="CityChooser/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 93.0
+margin_right = 140.0
+margin_bottom = 20.0
+text = "Close"
+
+[node name="BuySellDrugDialog" parent="." instance=ExtResource( 3 )]
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ChangeCityButton" to="." method="_on_ChangeCityButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/SellDrugButton" to="." method="_on_SellDrugButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/BuyDrugDialogButton" to="." method="_on_BuyDrugDialogButton_pressed"]
+[connection signal="pressed" from="CityChooser/MarginContainer/VBoxContainer/HBoxContainer/SelectCityButton" to="." method="_on_SelectCityButton_pressed"]
+[connection signal="pressed" from="CityChooser/MarginContainer/VBoxContainer/HBoxContainer/CloseCityChooserButton" to="." method="_on_CloseCityChooserButton_pressed"]
+[connection signal="buy_drugs" from="BuySellDrugDialog" to="." method="_on_BuySellDrugDialog_buy_drugs" binds= [ "", 0, 0 ]]
