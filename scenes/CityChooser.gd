@@ -26,6 +26,10 @@ func update_city_list():
 		index += 1
 
 
+func get_current_city_name():
+	return city_list.get_item_text(current_city).replace("-> ", "")
+
+
 func _on_SelectCityButton_pressed():
 	if city_list.is_anything_selected():
 		var city_name = city_list.get_item_text(city_list.get_selected_items()[0])

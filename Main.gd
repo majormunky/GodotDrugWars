@@ -28,6 +28,7 @@ func _ready():
 	randomize()
 	add_child(buy_sell_dialog)
 	city_chooser.update_city_list()
+	current_city_title.text = "Current City: " + city_chooser.get_current_city_name()
 	money_label.text = "Money: $" + str(player_money)
 	inventory_list.clear()
 	setup_drugs_for_city()
