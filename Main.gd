@@ -8,6 +8,7 @@ onready var current_city_title = $VBoxContainer/CurrentCityTitle
 onready var city_chooser = $CityChooser
 onready var city_drug_list = $VBoxContainer/CityDrugList
 onready var BuySellDialog = preload("res://scenes/BuySellDrugDialog.tscn")
+onready var message_box = $VBoxContainer/MessageBox
 var buy_sell_dialog = null
 
 var player_money = 1500
@@ -34,6 +35,8 @@ func _ready():
 	inventory_list.clear()
 	update_current_city()
 	setup_drugs_for_city()
+	
+	buy_sell_dialog.connect("buy_drugs", self, "_on_BuySellDrugDialog_buy_drugs")
 	
 
 func build_city_list():
@@ -144,4 +147,4 @@ func _on_CloseCityChooserButton_pressed():
 
 
 func _on_BuySellDrugDialog_buy_drugs(name, amount, drug_price):
-	print("buy drugs!", name, amount, drug_price)
+	message_box.add_text("You bought " + str(amount) + " unit(s) of " + name + " for $" + str(drug_price * amount))

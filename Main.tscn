@@ -118,6 +118,12 @@ margin_right = 36.0
 margin_bottom = 20.0
 text = "Buy"
 
+[node name="MessageBox" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 514.0
+margin_right = 480.0
+margin_bottom = 529.0
+fit_content_height = true
+
 [node name="CityChooser" type="PopupPanel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0

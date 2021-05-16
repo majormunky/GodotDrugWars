@@ -50,8 +50,8 @@ func _on_CloseButton_pressed():
 
 
 func _on_BuyDrugButton_pressed():
-	print(self.drug_name, self.drug_slider.value, self.price)
 	emit_signal(\"buy_drugs\", drug_name, drug_slider.value, self.price)
+	self.hide()
 
 
 func _on_SellDrugButton_pressed():
