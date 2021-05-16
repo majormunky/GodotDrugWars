@@ -37,8 +37,10 @@ func _ready():
 	buy_sell_dialog.connect("buy_drugs", self, "_on_BuySellDrugDialog_buy_drugs")
 	
 
-func _on_new_city_selected(new_city):
-	current_city_title.text = "Current City: " + new_city
+func _on_new_city_selected(_new_city):
+	update_current_city_label()
+	setup_drugs_for_city()
+	city_chooser.hide()
  
 
 func generate_random_drugs():
@@ -48,9 +50,8 @@ func generate_random_drugs():
 		result.append([i.name, drug_price])
 	return result
 
-func update_current_city():
-	pass
-	# current_city_title.text = "Current City: " + cities[current_city]
+func update_current_city_label():
+	current_city_title.text = "Current City: " + city_chooser.get_current_city_name()
 
 
 func setup_drugs_for_city():
@@ -80,10 +81,8 @@ func _on_ChangeCityButton_pressed():
 
 
 func _on_SelectCityButton_pressed():
-	# current_city = city_chooser.find_node("CityList").get_selected_items()[0]
-	update_current_city()
+	update_current_city_label()
 	setup_drugs_for_city()
-	
 	city_chooser.hide()
 
 
