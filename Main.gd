@@ -7,7 +7,7 @@ onready var money_label = $VBoxContainer/MoneyLabel
 onready var current_city_title = $VBoxContainer/CurrentCityTitle
 onready var city_chooser = $CityChooser
 onready var city_drug_list = $VBoxContainer/CityDrugList
-onready var BuySellDialog = preload("res://BuySellDrugDialog.tscn")
+onready var BuySellDialog = preload("res://scenes/BuySellDrugDialog.tscn")
 var buy_sell_dialog = null
 
 var player_money = 1500
