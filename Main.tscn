@@ -23,11 +23,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameTitle" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 480.0
+margin_bottom = 32.0
+custom_constants/separation = 300
+
+[node name="GameTitle" type="Label" parent="VBoxContainer/HBoxContainer4"]
+margin_right = 120.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
 text = "Drug Wars"
+
+[node name="DayLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 420.0
+margin_top = 9.0
+margin_right = 460.0
+margin_bottom = 23.0
+text = "Day: 1"
+align = 2
+valign = 1
 
 [node name="Spacer3" type="Label" parent="VBoxContainer"]
 margin_top = 36.0

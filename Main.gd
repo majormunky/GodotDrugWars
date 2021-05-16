@@ -7,7 +7,7 @@ onready var city_chooser = $CityChooser
 onready var city_drug_list = $VBoxContainer/CityDrugList
 onready var buy_sell_dialog = $BuySellDrugDialog
 onready var message_box = $VBoxContainer/MessageBox
-#var buy_sell_dialog = null
+onready var day_label = $VBoxContainer/HBoxContainer4/DayLabel
 
 var player_money = 1500
 var drugs = [
@@ -18,6 +18,8 @@ var drugs = [
 	{"name": "Speed", "min_price": 25, "max_price": 45},
 ]
 
+var current_day = 1
+var max_days = 30
 var player_drugs = []
 var current_city_drugs = []
 var drug_prices = {}
@@ -40,8 +42,14 @@ func _ready():
 func _on_new_city_selected(_new_city):
 	update_current_city_label()
 	setup_drugs_for_city()
+	current_day += 1
+	update_day_label()
 	city_chooser.hide()
  
+
+func update_day_label():
+	day_label.text = "Day: " + str(current_day)
+	
 
 func generate_random_drugs():
 	var result = []
