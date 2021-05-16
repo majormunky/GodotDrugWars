@@ -1,7 +1,5 @@
 extends Panel
 
-var cities = ["Seattle", "Portland", "San Diego", "Los Angeles", "San Francisco"]
-var current_city = 2
 onready var inventory_list = $VBoxContainer/InventoryList
 onready var money_label = $VBoxContainer/MoneyLabel
 onready var current_city_title = $VBoxContainer/CurrentCityTitle
@@ -29,29 +27,18 @@ var selected_drug = null
 func _ready():
 	randomize()
 	add_child(buy_sell_dialog)
-	build_city_list()
-	city_chooser.find_node("CityList").select(current_city)
+	city_chooser.update_city_list()
 	money_label.text = "Money: $" + str(player_money)
 	inventory_list.clear()
-	update_current_city()
 	setup_drugs_for_city()
 	
+	city_chooser.connect("go_to_city", self, "_on_new_city_selected")
 	buy_sell_dialog.connect("buy_drugs", self, "_on_BuySellDrugDialog_buy_drugs")
 	
 
-func build_city_list():
-	var city_list = city_chooser.find_node("CityList")
-	city_list.clear()
-	var index = 0
-	for city in cities:
-		var city_title
-		if index == current_city:
-			city_title = "-> " + city
-		else:
-			city_title = city
-		city_list.add_item(city_title)
-		index += 1
-
+func _on_new_city_selected(new_city):
+	current_city_title.text = "Current City: " + new_city
+ 
 
 func generate_random_drugs():
 	var result = []
@@ -61,7 +48,8 @@ func generate_random_drugs():
 	return result
 
 func update_current_city():
-	current_city_title.text = "Current City: " + cities[current_city]
+	pass
+	# current_city_title.text = "Current City: " + cities[current_city]
 
 
 func setup_drugs_for_city():
@@ -91,10 +79,10 @@ func _on_ChangeCityButton_pressed():
 
 
 func _on_SelectCityButton_pressed():
-	current_city = city_chooser.find_node("CityList").get_selected_items()[0]
+	# current_city = city_chooser.find_node("CityList").get_selected_items()[0]
 	update_current_city()
 	setup_drugs_for_city()
-	build_city_list()
+	
 	city_chooser.hide()
 
 
