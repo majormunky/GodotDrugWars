@@ -147,4 +147,10 @@ func _on_CloseCityChooserButton_pressed():
 
 
 func _on_BuySellDrugDialog_buy_drugs(name, amount, drug_price):
-	message_box.add_text("You bought " + str(amount) + " unit(s) of " + name + " for $" + str(drug_price * amount))
+	var total = drug_price * amount
+	player_money -= total
+	player_drugs.append([name, amount])
+	draw_player_drugs()
+	update_player_money_label()
+	message_box.add_text("You bought " + str(amount) + " unit(s) of " + name + " for $" + str(total))
+	
