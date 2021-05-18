@@ -16,6 +16,7 @@ var drugs = [
 	{"name": "Meth", "min_price": 10, "max_price": 45},
 	{"name": "Heroin", "min_price": 50, "max_price": 100},
 	{"name": "Speed", "min_price": 25, "max_price": 45},
+	{"name": "Acid", "min_price": 40, "max_price": 250},
 ]
 
 var current_day = 1
