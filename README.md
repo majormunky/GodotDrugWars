@@ -4,5 +4,5 @@ Re-implementation of an old game using Godot.  Mainly a way for me to get used t
 
 ### TODO
  - Get a bigger list of drugs
- - Add in random encoutners
+ - Add in random encounters
  - Create some sort of goal at the end of the 30 days
