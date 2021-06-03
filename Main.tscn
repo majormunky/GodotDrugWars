@@ -131,6 +131,7 @@ margin_bottom = 510.0
 [node name="BuyDrugDialogButton" type="Button" parent="VBoxContainer/HBoxContainer3"]
 margin_right = 36.0
 margin_bottom = 20.0
+disabled = true
 text = "Buy"
 
 [node name="MessageBox" type="RichTextLabel" parent="VBoxContainer"]

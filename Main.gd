@@ -8,6 +8,7 @@ onready var city_drug_list = $VBoxContainer/CityDrugList
 onready var buy_sell_dialog = $BuySellDrugDialog
 onready var message_box = $VBoxContainer/MessageBox
 onready var day_label = $VBoxContainer/HBoxContainer4/DayLabel
+onready var buy_button = $VBoxContainer/HBoxContainer3/BuyDrugDialogButton
 
 var player_money = 1500
 var drugs = [
@@ -38,7 +39,11 @@ func _ready():
 	
 	city_chooser.connect("go_to_city", self, "_on_new_city_selected")
 	buy_sell_dialog.connect("buy_drugs", self, "_on_BuySellDrugDialog_buy_drugs")
+	city_drug_list.connect("item_selected", self, "_on_drug_item_selected")
 	
+
+func _on_drug_item_selected(_index):
+	buy_button.disabled = false
 
 func _on_new_city_selected(_new_city):
 	update_current_city_label()
