@@ -32,7 +32,10 @@ func get_current_city_name():
 
 func _on_SelectCityButton_pressed():
 	if city_list.is_anything_selected():
-		var city_name = city_list.get_item_text(city_list.get_selected_items()[0])
+		var selected_index = city_list.get_selected_items()[0]
+		var city_name = city_list.get_item_text(selected_index)
+		current_city = selected_index
+		self.update_city_list()
 		self.hide()
 		emit_signal("go_to_city", city_name)
 

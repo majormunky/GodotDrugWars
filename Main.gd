@@ -3,12 +3,12 @@ extends Panel
 onready var inventory_list = $VBoxContainer/InventoryList
 onready var money_label = $VBoxContainer/MoneyLabel
 onready var current_city_title = $VBoxContainer/CurrentCityTitle
-onready var city_chooser = $CityChooser
 onready var city_drug_list = $VBoxContainer/CityDrugList
 onready var message_box = $VBoxContainer/MessageBox
 onready var day_label = $VBoxContainer/HBoxContainer4/DayLabel
 onready var buy_button = $VBoxContainer/HBoxContainer3/BuyDrugDialogButton
 onready var BuySellDialog = preload("res://scenes/BuySellDrugDialog.tscn")
+onready var CityChooser = preload("res://scenes/CityChooser.tscn")
 
 var player_money = 1500
 var drugs = [
@@ -27,12 +27,17 @@ var current_city_drugs = []
 var drug_prices = {}
 var selected_drug = null
 var buy_sell_dialog = null
+var city_chooser = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	buy_sell_dialog = BuySellDialog.instance()
 	add_child(buy_sell_dialog)
+	
+	city_chooser = CityChooser.instance()
+	add_child(city_chooser)
+	
 	city_chooser.update_city_list()
 	current_city_title.text = "Current City: " + city_chooser.get_current_city_name()
 	money_label.text = "Money: $" + str(player_money)
@@ -47,8 +52,8 @@ func _ready():
 func _on_drug_item_selected(_index):
 	buy_button.disabled = false
 
-func _on_new_city_selected(_new_city):
-	update_current_city_label()
+func _on_new_city_selected(new_city):
+	update_current_city_label(new_city)
 	setup_drugs_for_city()
 	current_day += 1
 	update_day_label()
@@ -66,8 +71,8 @@ func generate_random_drugs():
 		result.append([i.name, drug_price])
 	return result
 
-func update_current_city_label():
-	current_city_title.text = "Current City: " + city_chooser.get_current_city_name()
+func update_current_city_label(city_name):
+	current_city_title.text = "Current City: " + city_name
 
 
 func setup_drugs_for_city():
@@ -94,12 +99,6 @@ func draw_player_drugs():
 
 func _on_ChangeCityButton_pressed():
 	city_chooser.show()
-
-
-func _on_SelectCityButton_pressed():
-	update_current_city_label()
-	setup_drugs_for_city()
-	city_chooser.hide()
 
 
 func _on_BuyDrugDialogButton_pressed():
