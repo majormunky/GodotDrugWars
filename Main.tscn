@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Main.theme" type="Theme" id=2]
-[ext_resource path="res://scenes/BuySellDrugDialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/CityChooser.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Panel"]
@@ -142,9 +141,6 @@ fit_content_height = true
 
 [node name="CityChooser" parent="." instance=ExtResource( 4 )]
 
-[node name="BuySellDrugDialog" parent="." instance=ExtResource( 3 )]
-
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ChangeCityButton" to="." method="_on_ChangeCityButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/SellDrugButton" to="." method="_on_SellDrugButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/BuyDrugDialogButton" to="." method="_on_BuyDrugDialogButton_pressed"]
-[connection signal="buy_drugs" from="BuySellDrugDialog" to="." method="_on_BuySellDrugDialog_buy_drugs" binds= [ "", 0, 0 ]]

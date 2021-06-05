@@ -5,10 +5,10 @@ onready var money_label = $VBoxContainer/MoneyLabel
 onready var current_city_title = $VBoxContainer/CurrentCityTitle
 onready var city_chooser = $CityChooser
 onready var city_drug_list = $VBoxContainer/CityDrugList
-onready var buy_sell_dialog = $BuySellDrugDialog
 onready var message_box = $VBoxContainer/MessageBox
 onready var day_label = $VBoxContainer/HBoxContainer4/DayLabel
 onready var buy_button = $VBoxContainer/HBoxContainer3/BuyDrugDialogButton
+onready var BuySellDialog = preload("res://scenes/BuySellDrugDialog.tscn")
 
 var player_money = 1500
 var drugs = [
@@ -26,10 +26,12 @@ var player_drugs = []
 var current_city_drugs = []
 var drug_prices = {}
 var selected_drug = null
+var buy_sell_dialog = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	buy_sell_dialog = BuySellDialog.instance()
 	add_child(buy_sell_dialog)
 	city_chooser.update_city_list()
 	current_city_title.text = "Current City: " + city_chooser.get_current_city_name()
