@@ -142,6 +142,8 @@ func _on_SellDrugButton_pressed():
 	inventory_list.remove_item(selected_drug_index)
 	player_money += sell_amount
 	update_player_money_label()
+	message_box.clear()
+	message_box.add_text("You sold " + parts[1] + " for " + String(sell_amount))
 	buy_sell_dialog.find_node("DrugAmountSlider").set_value(1)
 
 
