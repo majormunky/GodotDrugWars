@@ -145,6 +145,8 @@ func _on_SellDrugButton_pressed():
 	message_box.clear()
 	message_box.add_text("You sold " + parts[1] + " for " + String(sell_amount))
 	buy_sell_dialog.find_node("DrugAmountSlider").set_value(1)
+	yield(get_tree().create_timer(2.5), "timeout")
+	message_box.clear()
 
 
 func _on_CloseCityChooserButton_pressed():
@@ -158,4 +160,5 @@ func _on_BuySellDrugDialog_buy_drugs(name, amount, drug_price):
 	draw_player_drugs()
 	update_player_money_label()
 	message_box.add_text("You bought " + str(amount) + " unit(s) of " + name + " for $" + str(total))
-	
+	yield(get_tree().create_timer(2.5), "timeout")
+	message_box.clear()
