@@ -41,4 +41,4 @@ func _on_SelectCityButton_pressed():
 
 
 func _on_CloseCityChooserButton_pressed():
-	pass # Replace with function body.
+	self.hide()
