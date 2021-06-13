@@ -74,7 +74,7 @@ margin_top = 150.0
 margin_right = 480.0
 margin_bottom = 182.0
 theme = ExtResource( 2 )
-text = "Inventory"
+text = "Your Inventory"
 
 [node name="MoneyLabel" type="Label" parent="VBoxContainer"]
 margin_top = 186.0
@@ -109,7 +109,7 @@ margin_top = 350.0
 margin_right = 480.0
 margin_bottom = 382.0
 theme = ExtResource( 2 )
-text = "City Inventory"
+text = "Dealers"
 
 [node name="CityDrugList" type="ItemList" parent="VBoxContainer"]
 margin_top = 386.0
